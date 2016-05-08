@@ -5,6 +5,9 @@ my $input = shift( @ARGV );
 my $output = shift( @ARGV );
 
 print "Fonts before\n";
+##
+# requires xpdf package
+##
 print `pdffonts $input`;
 
 system("gs -dSAFER -dNOPLATFONTS -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sPAPERSIZE=letter -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -dCompatibilityLevel=1.4 -dMaxSubsetPct=100 -dSubsetFonts=true -dEmbedAllFonts=true -sOutputFile=$output -f $input");
